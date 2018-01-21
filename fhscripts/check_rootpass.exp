@@ -1,0 +1,30 @@
+#!/usr/bin/expect
+#########################################################
+#./check_rootpass.exp  $IP '$ROOTPASS'
+#
+#########################################################
+
+set IP  [lindex $argv 0]
+set ROOTPASS [lindex $argv 1]
+set LOGINPASS PASSWORD
+
+
+spawn ssh user01@$IP
+
+expect "password: "
+send "$LOGINPASS\r"
+
+expect "$ "
+send "LANG=C su -\r"
+
+expect "assword: "
+#sleep 1
+send "$ROOTPASS\r"
+
+expect "# "
+send "exit\r"
+
+expect "$ "
+send "exit\r"
+
+interact

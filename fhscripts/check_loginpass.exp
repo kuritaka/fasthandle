@@ -1,0 +1,24 @@
+#!/usr/bin/expect
+#########################################################
+#./check_loginpass.exp  $IP $USER '$PASS'
+#
+#########################################################
+
+set IP  [lindex $argv 0]
+set USER [lindex $argv 1]
+set PASS [lindex $argv 2]
+
+
+spawn ssh $USER@$IP
+
+expect "password: "
+send "$PASS\r"
+
+expect "$ "
+send "LANG=C date\r"
+
+expect "$ "
+send "exit\r"
+
+
+exit 0
