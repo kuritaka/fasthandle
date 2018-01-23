@@ -1,3 +1,11 @@
 *~
 *.pyc
 .*.swp
+bin/*
+src/*
+rpm/*
+deb/*
+log/*
+tmp/*
+output/*
+!.gitkeep
