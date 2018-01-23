@@ -20,8 +20,18 @@ def put(local,remote):
 #     fab auth.pro ope.ssh:"sudo vi /etc/hosts"
 #------------------------------------------------------------------
 @task
-def ssh(cmd):
-    '''fab auth.pro ope.ssh:"sudo vi /etc/hosts" '''
+def ssh():
+    '''fab auth.pro ope.ssh '''
+    open_shell("hostname")
+
+
+#------------------------------------------------------------------
+# ope.sshcmd
+#     fab auth.pro ope.ssh:"sudo vi /etc/hosts"
+#------------------------------------------------------------------
+@task
+def sshcmd(cmd):
+    '''fab auth.pro ope.sshcmd:"sudo vi /etc/hosts" '''
     open_shell("%s" % cmd)
 
 
