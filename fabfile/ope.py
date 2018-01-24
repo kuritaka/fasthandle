@@ -18,6 +18,7 @@ def put(local,remote):
 #------------------------------------------------------------------
 # ope.ssh
 #     fab auth.pro ope.ssh:"sudo vi /etc/hosts"
+# WARNING: This is too late for copy and past. So you use usually fhssh.sh
 #------------------------------------------------------------------
 @task
 def ssh():
