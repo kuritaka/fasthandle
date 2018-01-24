@@ -26,3 +26,7 @@ https://fasthandle.net/
   * You acquire knowledge that you can make use of whichever company you go to.
 
 
+## Installing FastHandle
+
+https://fasthandle.net/preparation/installing.html
+
