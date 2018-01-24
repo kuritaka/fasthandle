@@ -3,33 +3,46 @@
 # fhssh.sh
 #
 # How to use
-#    fhssh.sh  auth.pro xx.xx.xx.xx
+#    fhssh.sh  -l   <- list command (help)
+#    fhssh.sh  -h   <- list command (help)
+#    fhssh.sh  -H xx.xx.xx.xx  auth.pro
+#    fhssh.sh  -H xx.xx.xx.xx  auth.stg
 #=====================================================================
 
 HELP () {
     echo "How to use"
-    cat $0 |grep auth |grep ")"|grep -v "fhssh.sh" |awk -F")" {'print "  fhssh.sh" $1 " x.x.x.x"'}
+    cat $0 |grep auth |grep ")"|grep -v "fhssh.sh" |awk -F")" {'print "  fhssh.sh -H x.x.x.x"  $1'}
     exit 0
 }
 
-AUTH=$1
-HOST=$2
+ERROR () {
+    echo ""
+    echo 'ERROR: Option is mistake'
+    echo ""
+}
 
-case ${AUTH} in
+case ${1} in
   -h|-l) HELP
      ;;
 esac
 
-
-# ------------------------------------------
-if [ -z ${HOST} ]; then
-    echo ""
-    echo 'ERROR: HOST is null'
-    echo ""
+if [ -z ${3} ]; then
+    ERROR
     HELP
     exit 1
 fi
 
+case ${1} in
+  -H) :
+    HOST=$2
+    AUTH=$3
+     ;;
+  *) :
+    ERROR
+    HELP
+    exit 1
+    ;;
+esac
 
 #===================================================================
 #
@@ -113,9 +126,4 @@ case ${AUTH} in
      PASSWD=testpass
      SRX
     ;;
-  *) HELP
-     exit
-     ;;
 esac
-
-
