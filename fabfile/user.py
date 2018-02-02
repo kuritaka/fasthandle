@@ -1,7 +1,9 @@
-import sys
+import sys, os
 from fabric.api import *
 from fabric.contrib import files
 from fabric.utils import abort
+
+FHHOME=os.environ["FHHOME"]
 
 #====================================================================
 #check
