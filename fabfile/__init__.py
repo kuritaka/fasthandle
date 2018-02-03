@@ -16,19 +16,19 @@ import auth
 import test
  
 ## OS Management
-# import user
-# import pkg
-# import net
-# import set
-# import get
-# import check
-# import ope
+import user
+import pkg
+import net
+import set
+import get
+import check
+import ope
  
 ## Middleware Management
-# import httpd
-# import nginx
-# import postfix
-# import squid
+import httpd
+import nginx
+import postfix
+import squid
  
 ## Programing Languages
-# import php
+import php
