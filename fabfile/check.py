@@ -20,7 +20,7 @@ def ntpsync():
 #------------------------------------------------------------------
 @task
 def nmap(port, remote):
-    """fab auth.pro ope.nmap:22,x.x.x.x"""
+    """ope.nmap:22,x.x.x.x"""
     run("nmap -Pn -sT -p %s %s " % (port, remote))
 
 #------------------------------------------------------------------
