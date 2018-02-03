@@ -24,11 +24,11 @@ def nmap(port, remote):
     run("nmap -Pn -sT -p %s %s " % (port, remote))
 
 #------------------------------------------------------------------
-# check_ssh:localuser,key,remoteuser,remotehost
+# check_ssh_hostname:localuser,key,remoteuser,remotehost
 #------------------------------------------------------------------
 @task
-def check_ssh(localuser, key, remoteuser, remotehost):
-    """ check_ssh:localuser,key,remoteuser,remotehost"""
+def check_ssh_hostname(localuser, key, remoteuser, remotehost):
+    """ check_ssh_hostname:localuser,key,remoteuser,remotehost"""
     sudo ('su - %s -c "ssh -i %s %s@%s hostname"' % (localuser, key, remoteuser, remotehost))
 
 
@@ -41,6 +41,7 @@ def check_ssh(localuser, key, remoteuser, remotehost):
 #------------------------------------------------------------------
 @task
 def reboot_check():
+    """ use  %s/scripts/check_reboot.sh """
     date = datetime.now().strftime('%Y%m%d_%H%M')
     outfile = "check_reboot.%s"  % (date)
  
@@ -64,6 +65,7 @@ def reboot_diff():
 #------------------------------------------------------------------
 @task
 def ping_gw():
+    """ use  %s/scripts/check_ping_gw.sh """
     run("test -d scripts || mkdir scripts")
     put("%s/scripts/check_ping_gw.sh" % FHHOME, "scripts/check_ping_gw.sh", mode=0755)
     run("scripts/check_ping_gwt.sh")
@@ -75,9 +77,10 @@ def ping_gw():
 #===============================================================================
 #-------------------------------------------------------------------------------
 # CentOS7
+# check.systemctl_service_enable_disable
 #-------------------------------------------------------------------------------
 @task
-def check_systemctl_service():
+def systemctl_service_enable_disable():
     sudo('systemctl list-unit-files -t service --no-pager |egrep "enable|disable" |sort -k 3')
  
 
