@@ -9,7 +9,7 @@ FHHOME=os.environ["FHHOME"]
 #===============================================================================
 @task
 def check_cmd():
-    put("%s/scripts/check_cmd.sh" % FHHOME, "scripts/check_cmd.sh, mode=0755)
+    put("%s/scripts/check_cmd.sh" % FHHOME, "scripts/check_cmd.sh", mode=0755)
     sudo("scripts/check_cmd.sh")
 
 
@@ -22,7 +22,7 @@ def check_cmd():
 #pkg.install_rpm_centos7
 @task
 def install_rpm_centos7():
-    put("%s/scripts/rpm.sh" % FHHOME, "scripts/rpm.sh, mode=0755)
+    put("%s/scripts/rpm.sh" % FHHOME, "scripts/rpm.sh", mode=0755)
     sudo("scripts/rpm.sh centos7", pty=False)
 
 #----------------------------------------------------------------------

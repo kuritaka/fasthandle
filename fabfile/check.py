@@ -53,11 +53,11 @@ def reboot_check():
 #------------------------------------------------------------------
 @task
 def reboot_diff():
-    run(ls -tr1 output/check_reboot.2* |tail -n 5)
+    run("ls -tr1 output/check_reboot.2* |tail -n 5")
     file1=run("ls -tr1 output/check_reboot.2* |tail -n 2 |head -n 1")
     file2=run("ls -tr1 output/check_reboot.2* |tail -n 1")
-    local("sdiff -s -w 150 %s %s" % (file1 file2))
-    run("sdiff -s -w 150 output/%s output/%s" % (file1 file2)
+    local("sdiff -s -w 150 %s %s" % (file1, file2))
+    run("sdiff -s -w 150 output/%s output/%s" % (file1, file2))
 
 #------------------------------------------------------------------
 # check.ping_gw
@@ -65,7 +65,7 @@ def reboot_diff():
 @task
 def ping_gw():
     run("test -d scripts || mkdir scripts")
-    put("%s/scripts/check_ping_gw.sh" % FHHOME, scripts/check_ping_gw.sh, mode=0755)
+    put("%s/scripts/check_ping_gw.sh" % FHHOME, "scripts/check_ping_gw.sh", mode=0755)
     run("scripts/check_ping_gwt.sh")
 
 
@@ -78,7 +78,7 @@ def ping_gw():
 #-------------------------------------------------------------------------------
 @task
 def check_systemctl_service():
-    sudo("systemctl list-unit-files -t service --no-pager |egrep "enable|disable" |sort -k 3")
+    sudo('systemctl list-unit-files -t service --no-pager |egrep "enable|disable" |sort -k 3')
  
 
 

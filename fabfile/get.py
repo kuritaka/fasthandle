@@ -9,7 +9,7 @@ FHHOME=os.environ["FHHOME"]
 #     get.file_remote_local:/etc/hosts,hosts
 #------------------------------------------------------------------
 @task
-def get.file_remote_local(remote,local):
+def file_remote_local(remote,local):
     """get.file_remote_local:/etc/hosts,hosts"""
     date = datetime.now().strftime('%Y%m%d_%H%M')
     hostname = run("hostname")
@@ -32,7 +32,7 @@ def sdiff_remote_local(remote,local):
     outfile = "%s/tmp/%s.%s"  % (FHHOME, hostname, date)
     
     sudo("cp %s /tmp/%s" % (remote,date))
-    get("/tmp/%s, %s" % (date outfile))
+    get("/tmp/%s, %s" % (date, outfile))
     local("sdiff -s -w 150 %s %s" % (outfile, local))
     
     run("rm -f /tmp/%s" % date)
@@ -52,7 +52,7 @@ def systeminfo():
     local("test -d output/%s || mkdir output/%s"    % (yearmonth, yearmonth))
     run("test -d scripts || mkdir scripts")
  
-    put("%s/scripts/systeminfo.sh", "scripts/systeminfo.sh, mode=0755 % FHHOME)
+    put("%s/scripts/systeminfo.sh" % FHHOME, "scripts/systeminfo.sh", mode=0755)
     sudo("scripts/systeminfo.sh 1>output/%s  2>/dev/null"   % (outfile))
     get("output/%s", "output/%s/%s"  % (outfile, yearmonth, outfile))
  

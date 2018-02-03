@@ -56,7 +56,7 @@ def check_modules_src():
 # Check Server-Status
 #----------------------------------------------------------------------
 @task
-def check_server-satus():
+def check_server_satus():
     '''curl http://localhost/server-status?auto'''
     run("curl  http://localhost/server-status?auto")
 

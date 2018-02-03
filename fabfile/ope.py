@@ -57,7 +57,7 @@ def sudo_vi(file):
 @task
 def cp_p_1dayago(file):
     """fab auth.pro  cp_p_1dayago:/etc/host,/etc/hosts"""
-    sudo("cp -p %s %s.`date -d '1day ago' +%Y%m%d`") % (file, file))
+    sudo("cp -p %s %s.`date -d '1day ago' +%Y%m%d`" % (file, file))
 
 
 
