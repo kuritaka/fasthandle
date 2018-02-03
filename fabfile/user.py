@@ -13,7 +13,7 @@ FHHOME=os.environ["FHHOME"]
 #------------------------------------------------
 @task 
 def check_user(user):
-    """fab  auth.pro  check_user:user01"""
+    """user.check_user:user01"""
     res = run("id %s" % user, warn_only=True)
     if res.failed is True:
         puts(red("There isn't %s in %s." % (user, env.host_string)))
@@ -25,7 +25,7 @@ def check_user(user):
 #------------------------------------------------
 @task 
 def check_group(group):
-    """fab  auth.pro  check_group:group01"""
+    """user.check_group:group01"""
     res = run("grep %s /etc/group" % group, warn_only=True)
     if res.failed is True:
         puts(red("There isn't %s in %s." % (group, env.host_string)))
@@ -130,6 +130,11 @@ def chpasswd_devuser02_pro():
     sudo("id devuser02 && echo 'devuser02:PASS' | chpasswd", warn_only=True)
 
 
+# user.chpasswd_devuser02_stg
+@task
+def chpasswd_devuser02_stg():
+    sudo("id devuser02 && echo 'devuser02:PASS' | chpasswd", warn_only=True)
+
 #------------------------------------------------
 # chpasswd devuser03
 #------------------------------------------------
@@ -159,9 +164,5 @@ def userdel_devuser02():
         sudo("userdel -r devuser02")
         return
 
-
-#====================================================================
-# etc
-#====================================================================
 
 
