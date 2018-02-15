@@ -3,6 +3,9 @@ from fabric.api import *
 from fabric.contrib import files
 from datetime import datetime
 
+
+FHHOME=os.environ["FHHOME"]
+
 env.warn_only = True
 env.port = 22
 env.eagerly_disconnect = True
@@ -14,14 +17,22 @@ if select.select([sys.stdin,],[],[],0.0)[0]:
     env.hosts = filter(bool, lines)
 
 
+
 #FastHandle Operation History to log file
-TIME = datetime.now().strftime('%Y/%m/%d %H:%M:%S')
+TIME = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 yymm = datetime.now().strftime('%Y%m')
 
-f=open("%s/log/history.%s.log" % (FHHOME,yymm) ,"a")
-f.write("%s " % TIME)
-f.write(' '.join(str(p) for p in sys.argv))
-f.write("\n")
+f=open("%s/log/fab.%s.log" % (FHHOME,yymm) ,"a")
+
+if env.hosts == []:
+  f.write("%s stdin-null " % TIME)
+  f.write(' '.join(str(p) for p in sys.argv))
+  f.write("\n")
+
+for p in env.hosts:
+  f.write("%s %s " % (TIME,p))
+  f.write(' '.join(str(p) for p in sys.argv))
+  f.write("\n")
 f.close()
 
 
