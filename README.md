@@ -1,4 +1,4 @@
-# FastHandle
+# FastHandle - IT Automation Examples
 
 ## What is FastHandle?
 
