@@ -55,7 +55,7 @@ def net_user(user):
 #------------------------------------------------------------------
 @task
 def net_user_active(user):
-   """ make user active from disable"""
+    """ make user active from disable"""
     run("net user %s /active" % user, shell=False, pty=False)
 
 
