@@ -1,4 +1,4 @@
-# FastHandle - IT Automation Examples
+# FastHandle - IT Operations Examples
 
 ## What is FastHandle?
 
