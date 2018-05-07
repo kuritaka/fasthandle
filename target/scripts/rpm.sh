@@ -29,6 +29,7 @@ centos7() {
     rpm -q net-tools         > /dev/null 2>&1 || yum -y install net-tools
     rpm -q mailx             > /dev/null 2>&1 || yum -y install mailx
     rpm -q nmap-ncat         > /dev/null 2>&1 || yum -y install nmap-ncat
+    rpm -q ccze              > /dev/null 2>&1 || yum -y install ccze
 }
 
 

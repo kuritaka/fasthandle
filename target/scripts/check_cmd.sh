@@ -28,3 +28,10 @@ which snmpwalk    >/dev/null 2>&1 || echo "snmpwalk  NG"
 #-----------------------------------------------------
 which dstat       >/dev/null 2>&1 || echo "dstat    NG"
 which iperf       >/dev/null 2>&1 || echo "iperf    NG"
+
+
+
+#-----------------------------------------------------
+#etc
+#-----------------------------------------------------
+which ccze       >/dev/null 2>&1 || echo "ccze    NG   # ccze is log colorizer"
