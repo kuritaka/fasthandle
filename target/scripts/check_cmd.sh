@@ -34,4 +34,4 @@ which iperf       >/dev/null 2>&1 || echo "iperf    NG"
 #-----------------------------------------------------
 #etc
 #-----------------------------------------------------
-which ccze       >/dev/null 2>&1 || echo "ccze    NG   # ccze is log colorizer"
+which ccze        >/dev/null 2>&1 || echo "ccze    NG   # ccze is log colorizer"
