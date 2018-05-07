@@ -2,6 +2,7 @@ import sys, glob, os
 from fabric.api import *
 from fabric.contrib import files
 
+FHHOME=os.environ["FHHOME"]
 
 #------------------------------------------------------------------------
 # Linux
