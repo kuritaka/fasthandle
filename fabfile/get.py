@@ -50,10 +50,11 @@ def systeminfo():
     yearmonth = datetime.now().strftime('%Y%m')
     outfile = "systeminfo.%s.%s"  % (hostname, date)
  
-    local("test -d output/%s || mkdir output/%s"    % (yearmonth, yearmonth))
+    local("test -d %s/output/%s || mkdir %s/output/%s"  % (FHHOME, yearmonth, FHHOME, yearmonth))
     run("test -d scripts || mkdir scripts")
+    run("test -d output || mkdir output")
  
     put("%s/scripts/systeminfo.sh" % FHHOME, "scripts/systeminfo.sh", mode=0755)
-    sudo("scripts/systeminfo.sh 1>output/%s  2>/dev/null"   % (outfile))
-    get("output/%s", "output/%s/%s"  % (outfile, yearmonth, outfile))
+    sudo("scripts/systeminfo.sh  1>output/%s  2>/dev/null"   % (outfile))
+    get("output/%s", "%s/output/%s/%s"  % (outfile, FHHOME, yearmonth, outfile))
  
