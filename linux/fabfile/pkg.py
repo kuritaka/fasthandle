@@ -34,7 +34,7 @@ def systemctl_service_enable_disable():
 #pkg.install_rpm_centos7
 @task
 def install_rpm_centos7():
-    put("%s/scripts/rpm.sh" % FHHOME, "scripts/rpm.sh", mode=0755)
+    put("%s/scripts/rpm.sh" % FHLINUX, "scripts/rpm.sh", mode=0755)
     sudo("scripts/rpm.sh centos7", pty=False)
 
 #----------------------------------------------------------------------
