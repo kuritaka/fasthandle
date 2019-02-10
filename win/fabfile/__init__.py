@@ -7,7 +7,7 @@ from datetime import datetime
 #======================================================
 # Variable
 #======================================================
-FHHOME=os.environ["FHHOME"]
+FHWIN=os.environ["FHWIN"]
 
 env.warn_only = True
 env.port = 22
@@ -30,7 +30,7 @@ if select.select([sys.stdin,],[],[],0.0)[0]:
 TIME = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 yymm = datetime.now().strftime('%Y%m')
 
-f=open("%s/log/fab.%s.log" % (FHHOME,yymm) ,"a")
+f=open("%s/log/fab.%s.log" % (FHWIN,yymm) ,"a")
 
 if env.hosts == []:
   f.write("%s stdin-null " % TIME)

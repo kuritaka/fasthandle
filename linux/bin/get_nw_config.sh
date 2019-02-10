@@ -15,7 +15,7 @@ NWPASS=$5
 DATE=`date +%Y%m%d_%H%M`
 TSERVER=192.168.0.5
 TUSER=user01
-TDIR=/home/fasthandle/fhhome/tftp
+TDIR=/home/fasthandle/fhhome/linux/tftp
  
 CONF=${TDIR}/${NWHOST}/${NWHOST}_${DATE}.conf
  

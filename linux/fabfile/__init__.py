@@ -16,13 +16,13 @@ elif hostname == "stg-fasthandle-1":
     env.password = 'fastpass'
 elif hostname == "dev-fasthandle-1":
     env.user = 'fasthandle'
-    env.key_filename = '$FHHOME/key/id_rsa.fasthandle.dev-fasthandle-1'
+    env.key_filename = '$FHLINUX/key/id_rsa.fasthandle.dev-fasthandle-1'
     #env.password = 'passphrase-for-key'
 
 #======================================================
 # Variable
 #======================================================
-FHHOME=os.environ["FHHOME"]
+FHLINUX=os.environ["FHLINUX"]
 
 env.warn_only = True
 env.port = 22
@@ -44,7 +44,7 @@ if select.select([sys.stdin,],[],[],0.0)[0]:
 TIME = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 yymm = datetime.now().strftime('%Y%m')
 
-f=open("%s/log/fab.%s.log" % (FHHOME,yymm) ,"a")
+f=open("%s/log/fab.%s.log" % (FHLINUX,yymm) ,"a")
 
 if env.hosts == []:
   f.write("%s stdin-null " % TIME)

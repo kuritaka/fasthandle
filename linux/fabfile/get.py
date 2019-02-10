@@ -3,7 +3,7 @@ from fabric.api import *
 from fabric.contrib import files
 from datetime import datetime
 
-FHHOME=os.environ["FHHOME"]
+FHLINUX=os.environ["FHLINUX"]
 
 #------------------------------------------------------------------
 # get.file_remote_local
@@ -14,7 +14,7 @@ def file_remote_local(remote,local):
     """get.file_remote_local:/etc/hosts,hosts"""
     date = datetime.now().strftime('%Y%m%d_%H%M')
     hostname = run("hostname")
-    outfile = "%s/tmp/%s.%s.%s"  % (FHHOME, local, hostname, date)
+    outfile = "%s/tmp/%s.%s.%s"  % (FHLINUX, local, hostname, date)
     
     sudo("cp %s /tmp/%s" % (remote,date))
     get("/tmp/%s, %s" % (date, outfile))
@@ -30,7 +30,7 @@ def sdiff_remote_local(remote,local):
     """get.sdiff_remote_local:/etc/hosts,/home/fasthandle/conf/etc/hosts.server1"""
     date = datetime.now().strftime('%Y%m%d_%H%M')
     hostname = run("hostname")
-    outfile = "%s/tmp/%s.%s"  % (FHHOME, hostname, date)
+    outfile = "%s/tmp/%s.%s"  % (FHLINUX, hostname, date)
     
     sudo("cp %s /tmp/%s" % (remote,date))
     get("/tmp/%s, %s" % (date, outfile))
@@ -50,11 +50,11 @@ def systeminfo():
     yearmonth = datetime.now().strftime('%Y%m')
     outfile = "systeminfo.%s.%s"  % (hostname, date)
  
-    local("test -d %s/output/%s || mkdir %s/output/%s"  % (FHHOME, yearmonth, FHHOME, yearmonth))
+    local("test -d %s/output/%s || mkdir %s/output/%s"  % (FHLINUX, yearmonth, FHLINUX, yearmonth))
     run("test -d scripts || mkdir scripts")
     run("test -d output || mkdir output")
  
-    put("%s/scripts/systeminfo.sh" % FHHOME, "scripts/systeminfo.sh", mode=0755)
+    put("%s/scripts/systeminfo.sh" % FHLINUX, "scripts/systeminfo.sh", mode=0755)
     sudo("scripts/systeminfo.sh  1>output/%s  2>/dev/null"   % (outfile))
-    get("output/%s", "%s/output/%s/%s"  % (outfile, FHHOME, yearmonth, outfile))
+    get("output/%s", "%s/output/%s/%s"  % (outfile, FHLINUX, yearmonth, outfile))
  

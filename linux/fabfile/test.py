@@ -3,7 +3,7 @@ from fabric.api import *
 from fabric.contrib import files
 from datetime import datetime
 
-FHHOME=os.environ["FHHOME"]
+FHLINUX=os.environ["FHLINUX"]
 
 # test.local_hostname
 @task

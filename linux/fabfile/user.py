@@ -3,7 +3,7 @@ from fabric.api import *
 from fabric.contrib import files
 from fabric.utils import abort
 
-FHHOME=os.environ["FHHOME"]
+FHLINUX=os.environ["FHLINUX"]
 
 #====================================================================
 #check

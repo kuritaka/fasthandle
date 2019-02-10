@@ -3,7 +3,7 @@ from fabric.api import *
 from fabric.contrib import files
 from datetime import datetime
 
-FHHOME=os.environ["FHHOME"]
+FHLINUX=os.environ["FHLINUX"]
 
 # net.backup_config
 @task
@@ -23,9 +23,9 @@ def set_bond(ip,bond,nic1,nic2):
     backup_config()
     date = datetime.now().strftime('%Y%m%d_%H%M')
     # put
-    put("%s/etc/sysconfig/network-scripts/ifcfg-bond.tpl" % FHHOME, "/tmp/ifcfg-%s.%s" % (bond,date))
-    put("%s/etc/sysconfig/network-scripts/ifcfg-bond_nic.tpl" % FHHOME, "/tmp/ifcfg-%s.%s" % (nic1,date))
-    put("%s/etc/sysconfig/network-scripts/ifcfg-bond_nic.tpl" % FHHOME, "/tmp/ifcfg-%s.%s" % (nic2,date))
+    put("%s/etc/sysconfig/network-scripts/ifcfg-bond.tpl" % FHLINUX, "/tmp/ifcfg-%s.%s" % (bond,date))
+    put("%s/etc/sysconfig/network-scripts/ifcfg-bond_nic.tpl" % FHLINUX, "/tmp/ifcfg-%s.%s" % (nic1,date))
+    put("%s/etc/sysconfig/network-scripts/ifcfg-bond_nic.tpl" % FHLINUX, "/tmp/ifcfg-%s.%s" % (nic2,date))
 
     # bond
     sed("/tmp/ifcfg-%s.%s" % (bond,date), before="DEVICE=bondX", after="DEVICE=%s" % ip)

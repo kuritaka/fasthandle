@@ -2,7 +2,7 @@ import sys, os
 from fabric.api import *
 from fabric.contrib import files
 
-FHHOME=os.environ["FHHOME"]
+FHWIN=os.environ["FHWIN"]
 
 
 #------------------------------------------------------------------

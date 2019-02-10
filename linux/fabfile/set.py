@@ -4,7 +4,7 @@ from fabric.contrib import files
 from fabric.contrib.files import sed, append, contains
 from datetime import datetime
 
-FHHOME=os.environ["FHHOME"]
+FHLINUX=os.environ["FHLINUX"]
 
 
 
@@ -47,7 +47,7 @@ def etc_sysctlconf():
     '''/etc/sysctl.conf'''
     date = datetime.now().strftime('%Y%m%d_%H%M')
     sudo("cp -f /etc/sysctl.conf /etc/sysctl.conf.`date -d '1day ago' +%Y%m%d`")
-    put("%s/conf/os/sysctl.conf" % FHHOME, "/tmp/sysctl.conf.%s" % date)
+    put("%s/conf/os/sysctl.conf" % FHLINUX, "/tmp/sysctl.conf.%s" % date)
     sudo("mv /tmp/sysctl.conf.%s /etc/sysctl.conf" % date)
 
 # set.etc_security_limitsconf
@@ -56,7 +56,7 @@ def etc_security_limitsconf():
     '''/etc/security/limits.conf'''
     date = datetime.now().strftime('%Y%m%d_%H%M')
     sudo("cp -f /etc/security/limits.conf /etc/security/limits.conf.`date -d '1day ago' +%Y%m%d`")
-    put("%s/conf/os/limits.conf" % FHHOME, "/tmp/limits.conf.%s" % date)
+    put("%s/conf/os/limits.conf" % FHLINUX, "/tmp/limits.conf.%s" % date)
     sudo("mv /tmp/limits.conf.%s /etc/security/limits.conf" % date)
     #
     sudo("rm -f /etc/security/limits.d/*-nproc.conf")
@@ -68,7 +68,7 @@ def etc_selinux_config():
     '''/etc/selinux/config CentOS7'''
     date = datetime.now().strftime('%Y%m%d_%H%M')
     sudo("cp -f /etc/selinux/config /etc/selinux/config.`date -d '1day ago' +%Y%m%d`")
-    put("%s/conf/os/selinux_config.conf"  % FHHOME, "/tmp/config.%s" % date)
+    put("%s/conf/os/selinux_config.conf"  % FHLINUX, "/tmp/config.%s" % date)
     sudo("mv /tmp/config.%s /etc/selinux/config" % date)
 
 # etc_sysconfig_selinux CentOS6
@@ -77,7 +77,7 @@ def etc_sysconfig_selinux():
     '''/etc/sysconfig/selinux CentOS6'''
     date = datetime.now().strftime('%Y%m%d_%H%M')
     sudo("cp -f /etc/sysconfig/selinux  /etc/sysconfig/selinux.`date -d '1day ago' +%Y%m%d`")
-    put("%s/conf/os/selinux_config.conf" % FHHOME, "/tmp/selinux.%s" % date)
+    put("%s/conf/os/selinux_config.conf" % FHLINUX, "/tmp/selinux.%s" % date)
     sudo("mv /tmp/selinux.%s /etc/sysconfig/selinux" % date)
 
 

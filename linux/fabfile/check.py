@@ -3,7 +3,7 @@ from fabric.api import *
 from fabric.contrib import files
 from datetime import datetime
 
-FHHOME=os.environ["FHHOME"]
+FHLINUX=os.environ["FHLINUX"]
 
 
 #------------------------------------------------------------------
@@ -47,7 +47,7 @@ def reboot_check():
     outfile = "check_reboot.%s"  % (date)
  
     run("test -d scripts || mkdir scripts")
-    put("%s/scripts/check_reboot.sh" % FHHOME, scripts/check_reboot.sh, mode=0755)
+    put("%s/scripts/check_reboot.sh" % FHLINUX, scripts/check_reboot.sh, mode=0755)
     sudo("scripts/check_reboot.sh 1>output/%s  2>/dev/null"   % (outfile))
 
 #------------------------------------------------------------------
@@ -68,7 +68,7 @@ def reboot_diff():
 def ping_gw():
     """ use  %s/scripts/check_ping_gw.sh """
     run("test -d scripts || mkdir scripts")
-    put("%s/scripts/check_ping_gw.sh" % FHHOME, "scripts/check_ping_gw.sh", mode=0755)
+    put("%s/scripts/check_ping_gw.sh" % FHLINUX, "scripts/check_ping_gw.sh", mode=0755)
     run("scripts/check_ping_gwt.sh")
 
 

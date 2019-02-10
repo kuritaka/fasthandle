@@ -3,7 +3,7 @@ from fabric.api import *
 from fabric.contrib import files
 
 
-FHHOME=os.environ["FHHOME"]
+FHLINUX=os.environ["FHLINUX"]
 
 #----------------------------------------------------------------------
 # Check PHP

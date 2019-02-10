@@ -2,7 +2,7 @@ import sys, os
 from fabric.api import *
 from fabric.contrib import files
 
-FHHOME=os.environ["FHHOME"]
+FHLINUX=os.environ["FHLINUX"]
 
 #----------------------------------------------------------------------
 # Installing Squid
@@ -32,7 +32,7 @@ def systemctl_restart():
 def change_squidconf(host):
     today = datetime.now().strftime('%Y%m%d')
     sudo("cp -f /etc/squid/squid.conf /etc/squid/squid.conf.`date -d '1day ago' +%Y%m%d`")
-    put("%s/conf/squid/squid.conf.%s" % (FHHOME, host), "/tmp/squid.conf.%s" % date)
+    put("%s/conf/squid/squid.conf.%s" % (FHLINUX, host), "/tmp/squid.conf.%s" % date)
     sudo("mv /tmp/squid.conf.%s /etc/sysctl.conf" % date)
 
 

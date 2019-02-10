@@ -2,14 +2,14 @@ import sys, os
 from fabric.api import *
 from fabric.contrib import files
 
-FHHOME=os.environ["FHHOME"]
+FHLINUX=os.environ["FHLINUX"]
 
 #===============================================================================
 #Check Commands
 #===============================================================================
 @task
 def check_cmd():
-    put("%s/scripts/check_cmd.sh" % FHHOME, "scripts/check_cmd.sh", mode=0755)
+    put("%s/scripts/check_cmd.sh" % FHLINUX, "scripts/check_cmd.sh", mode=0755)
     sudo("scripts/check_cmd.sh")
 
 

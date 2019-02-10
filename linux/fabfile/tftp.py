@@ -2,7 +2,7 @@ import sys, os
 from fabric.api import *
 from fabric.contrib import files
 
-FHHOME=os.environ["FHHOME"]
+FHLINUX=os.environ["FHLINUX"]
 
 #----------------------------------------------------------------------
 # Installing TFTP
@@ -28,11 +28,11 @@ def conf():
     #sed -i "s/\(disable[\t]*= *\).*/\1no/" /etc/xinetd.d/tftp
 
     #server_args             = -c -u root -s /var/lib/tftpboot
-    sudo('sed -i "s/\(server_args[\t]*= *\).*/\1-c -u root -s \/home\/fasthandle\/fhhome\/tftp/" /etc/xinetd.d/tftp')
+    sudo('sed -i "s/\(server_args[\t]*= *\).*/\1-c -u root -s \/home\/fasthandle\/fhhome\/linux\/tftp/" /etc/xinetd.d/tftp')
     #sed -i "s/\(server_args[\t]*= *\).*/\1-s \/opt\/Tftproot -c/" /etc/xinetd.d/tft
 
-    sudo("test -d /home/fasthandle/fhhome/tftp || mkdir /home/fasthandle/fhhome/tftp")
-    sudo("chmod 777 /home/fasthandle/fhhome/tftp")
+    sudo("test -d /home/fasthandle/fhhome/linux/tftp || mkdir /home/fasthandle/fhhome/linux/tftp")
+    sudo("chmod 777 /home/fasthandle/fhhome/linux/tftp")
 
 #----------------------------------------------------------------------
 # Service
